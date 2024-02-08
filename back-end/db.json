@@ -5,7 +5,7 @@
     },
     {
         "lista":"spesa",
-        "fatto": false
+        "fatto": true
     },
     {
         "lista":"posta",
@@ -13,7 +13,7 @@
     },
     {
         "lista":"lavare macchina",
-        "fatto": false
+        "fatto": true
     },
     {
         "lista":"ferramenta",

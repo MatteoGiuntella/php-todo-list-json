@@ -4,7 +4,18 @@
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        myList: []
       }
+      
+    },
+    mounted() {
+      console.log('Mounted')
+      axios
+          .get('http://localhost/php-todo-list-json/back-end/index.php')
+          .then((res) => {
+              this.myList = res.data
+              console.log(this.myList)
+          });
     }
+    
   }).mount('#app')
