@@ -11,8 +11,11 @@
     <div id="app">
         <div class="container">
             <h1>Todo List</h1>
+
+            <input type="text" minlength="3">
+            <button type="button" >Aggiungi alla lista</button>
             <ul>
-                Lista della spesa
+               <h3> Lista della spesa </h3>
                 <li v-for="(elem, i)  in myList" :key="i">
                     {{elem.lista}}
                 </li>
