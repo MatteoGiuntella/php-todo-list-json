@@ -43,12 +43,15 @@
         });
 
       },
-      checked(){
-        if (this.myList.fatto == false) {
-          this.myList.fatto = true
-        }
-        else{
+      checked(index){
+        console.log('index',index);
+        console.log('myList',this.myList[index].fatto);
 
+        if (this.myList[index].fatto == false) {
+          this.myList[index].fatto = true
+        }
+        else if(this.myList[index].fatto == true){
+          this.myList[index].fatto = false
         }
       }
     }
