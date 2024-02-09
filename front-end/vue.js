@@ -1,6 +1,6 @@
 
   const { createApp } = Vue
-
+  
   createApp({
     data() {
       return {
@@ -53,6 +53,22 @@
         else if(this.myList[index].fatto == true){
           this.myList[index].fatto = false
         }
+      },
+      removeList(index){
+        axios
+          .post('http://localhost/php-todo-list-json/back-end/removetodo.php',
+          {
+            indiceLista : index,
+          },
+          {
+            headers : { 'Content-Type' : 'multipart/form-data'}
+          })
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.myList.splice(index, 1)
+            }
+          });
+
       }
     }
     

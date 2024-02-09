@@ -17,8 +17,9 @@
             <button @click="addlist()" type="button" >Aggiungi alla lista</button>
             <ul>
                <h3> Lista della spesa </h3>
-                <li @click="checked(i)" v-for="(elem, i)  in myList" :key="i" :class="elem.fatto == true ? 'active' : '' ">
-                    {{elem.lista}}
+                <li  v-for="(elem, i)  in myList" :key="i" >
+                     <span @click="checked(i)"  :class="elem.fatto == true ? 'active' : '' ">{{elem.lista}}</span>
+                    <span @click="removeList(i)">X</span>
                 </li>
             </ul>
 
