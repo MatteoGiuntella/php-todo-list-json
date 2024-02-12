@@ -4,8 +4,10 @@
   createApp({
     data() {
       return {
+        flag: null,
         myList: [],
         newList : '',
+        fix:'',
       }
       
     },
@@ -26,20 +28,22 @@
         .post('http://localhost/php-todo-list-json/back-end/addtodo.php',
         {
           lista: this.newList,
-          fatto: false
+          
         },
         {
           headers : { 'Content-Type' : 'multipart/form-data'}
         })
         .then((res) => {
+          console.log(res)
             if (res.data.code == 200) {
               this.myList.push({
                 lista: this.newList,
                 fatto: false
-      
+    
               })
               this.newList =  '';
             }
+            
         });
 
       },
@@ -69,6 +73,39 @@
             }
           });
 
+      },
+      fixList(index){
+        if (this.flag == index) {
+          this.flag = null
+          
+        }
+        else{
+          this.flag = index
+        }
+
+      },
+      pushFix(i){
+        axios
+        .post('http://localhost/php-todo-list-json/back-end/fix.php',
+        {
+          lista: this.fix,
+          indiceLista : i, 
+        },
+        {
+          headers : { 'Content-Type' : 'multipart/form-data'}
+        })
+        .then((res) => {
+          console.log(res)
+            // if (res.data.code == 200) {
+              let finalfix = {
+                lista: this.fix,
+                fatto: false
+              }
+              this.myList.splice(i,1,finalfix)
+              
+            // }
+            this.newList =  '';
+        });
       }
     }
     

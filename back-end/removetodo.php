@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 $removeListJson = file_get_contents('db.json');
 
 $removeList = json_decode($removeListJson, true);
